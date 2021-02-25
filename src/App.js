@@ -19,7 +19,6 @@ const KEYCODES = {
 const INIT_STATE = {
   direction: KEYCODES.RIGHT,
   speed: 200,
-  moveIntervalId: null,
   food: genRandomCoords(),
   snakeBody: [
     [0, 0],
@@ -44,9 +43,7 @@ class App extends Component {
 
   componentWillUnmount() {
     document.removeEventListener("keydown", this.onKeyDown);
-    if (this.state.moveIntervalId) {
-      clearInterval(this.state.moveIntervalId);
-    }
+    clearInterval(this.state.moveIntervalId);
   }
 
   onKeyDown = (e) => {
